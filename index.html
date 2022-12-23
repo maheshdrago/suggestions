@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepawali SEO-Question Generator</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@700&family=Poppins&display=swap');
+    
+    *{
+        font-family: 'Poppins', sans-serif;
+    }
+    .accordion-item{
+        box-shadow: 0 1px 11px 0 rgb(181, 181, 181);
+        margin-bottom: 8px;
+        padding: 5px;
+    }
+    .main-wrapper{
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        box-shadow: 0 1px 11px 0 rgb(181, 181, 181);
+        overflow: auto;
+    }
+    .container{
+        margin-top: 20px !important ;
+        width: min-content;
+    }
+    .main-wrapper input {
+        border: none !important;
+        overflow: auto !important;
+        outline: none;
+        padding: 14px !important;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+
+    }
+    .btn-primary{
+        background-color: #3b8ffc;
+        border: 1px solid #3b8ffc;
+    }
+    .btn-primary:hover{
+        background-color: #4294ff;
+        border: 1px solid #4294ff;
+    }
+    
+    
+
+    .links{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .links a{
+        text-decoration: underline;
+        color: black;
+        margin-right: 16px;
+        font-size: 11px;
+    }
+
+    @media (max-width:700px){
+        .links {
+            display: none;
+        }
+        body{
+            margin-top: 9px;
+        }
+    }
+
+    .navbar-links {
+        height: 80%;
+        margin-left: 20vw;
+        width: min-content;
+    }
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    white-space: nowrap;
+    display: inline;
+    text-decoration: none;
+    color: black;
+    padding: 1rem;
+}
+
+
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: black;
+    border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links li:hover {
+    background-color: rgb(207, 206, 206);
+}
+    .navbar-links.active {
+        display: flex;
+    }
+}
+
+.td-tagline-text{
+    letter-spacing: 1.8px;
+    font-size: 12px;
+    font-family: serif;
+    color: #777;
+    padding-top: 2px;
+    padding-bottom: 10px;
+    margin-top: 1px !important;
+}
+    .menu-tab,.counter-tab{
+        margin-top: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .menu-tab button{
+        margin-right: 7px;
+        margin-bottom: 40px;
+    }
+    .accordion{
+        margin-bottom: 200px;
+    }
+    .unregistered-span{
+        padding: 3px;
+        border: 1px red solid;
+        color: white;
+        background-color: red;
+        border-radius: 4px
+    }
+    .registered-span{
+        padding: 3px;
+        border: 1px green solid;
+        color: white;
+        background-color: green;
+        border-radius: 4px
+    }
+    .horizontal{
+        display: flex;
+        flex-direction: row;
+        width: 30%;
+        justify-content: space-between;
+    }
+
+
+</style>
+<body>
+    <div class="header-div">
+        <div class="links">     
+            <p><a href="https://www.deepawaliseotips.com/about-us/">About us</a></p>
+            <p><a href="https://www.deepawaliseotips.com/digital-marketing-and-seo-consultancy-services-pavan-agrawal/">SEO Consultancy Services</a></p>
+            <p><a href="https://www.deepawaliseotips.com/privacy-policy/">Privacy Policy</a></p>
+            <p><a href="https://www.deepawaliseotips.com/disclaimer/">Disclaimer</a></p>
+            <p><a href="https://www.deepawaliseotips.com/terms-conditions/">Terms & Conditions</a></p>
+            <p><a href="https://www.deepawaliseotips.com/contact-us/">Contact Us</a></p>
+        </div>
+        <div class="title">
+            <center>
+                <h1 style="font-family: serif;font-size: 5vw;">SEO Pavan Agrawal</h1>
+                <span class="td-tagline-text">Remember Observe and React</span>
+            </center>
+            <hr>
+            
+        </div>
+        <nav class="navbar">
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            
+
+            <div class="navbar-links">
+                <ul>
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/">HOME</a>
+                    </li>
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/category/start-a-blog/">START A BLOG</a>
+                    </li>
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/category/hosting/">HOSTING</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://www.deepawaliseotips.com/tools/">TOOLS [PAVAN AGRAWAL]</a>
+                    </li>
+                    <li>
+                        <a href="https://twittertrends.deepawaliseotips.com/">TWITTER TRENDS</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <hr>
+    <br>
+    <div class="container">
+        <div class="header-tab">
+            <h3>Question Generator</h3>
+        </div>
+
+        <br>
+        <div class="main-wrapper">
+            <input id="keyword" contenteditable="true" style="width:900px;border:1px solid;overflow-y:scroll" placeholder="Enter Keyword"></input>    
+        </div>
+
+
+        <div class="menu-tab" id="tab">
+            <button class="btn btn-primary" type="button" id="load-btn" onclick="get_data()">Generate</button>
+        </div>
+        
+        <div class="accordion" id="accordionExample"></div>
+
+        <div class="main-wrapper" style="padding: 22px;">
+            <h3>What are question keywords?</h3>
+            <p>
+                Question keywords consist of complete questions that people type into Google when looking for specific answers. Question keywords generally start with words like How, Where, When, What and Who. Question keywords tend to be long-tail keywords and very specific. For example, "how high is Mount Kilimanjaro", "who is the richest person in America", and "where is the best place to live in Spain."   
+            </p>
+            <h3>Do question keywords help improve SEO?</h3>
+            <p>
+                Yes, question keywords are great for SEO and can help improve a website's ranking. Answering question keywords demonstrates niche expertise, which Google loves. Often question based keywords have high search volume and low competition, which makes them easier to rank for. 
+            </p>
+            <h3>How to Find Keyword Questions?</h3>
+            <p>The first question you might have is how to find question keywords for your clients?
+                <br> Thankfully, there are many SEO tools and processes that will help you find highly relevant question keywords. One of the best tools that you can find online is 
+                 Deepawali Questions Generator tool.
+                <br> Let’s jump in and find some questions:</p>
+                From your search browser, go to deepawaliseotips.com and click on the "Question Generator tool" icon. In your search browser, you can also copy and paste the URL. It will launch the programme. To begin searching, input the term here and click "Generate." A list of keyword questions will be returned by the application after a search for questions.
+        </div>
+    </div>
+    
+</body>
+<script>
+    let flag = false;
+    let data;
+    
+
+    const get_data = async ()=>{
+        const keyword = document.getElementById('keyword').value;
+        const temp = []
+        temp.push(keyword)
+
+        document.getElementById('load-btn').disabled = true;
+        document.getElementById('load-btn').innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...'
+        await fetch("https://mahesh5077.pythonanywhere.com/relatedKeywords", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                "keyword":temp
+            }),
+        })
+        .then(
+            response => response.json()
+        )
+        .then(response_data=>{
+            document.getElementById('load-btn').disabled = false;
+            document.getElementById('load-btn').innerHTML = 'Generate'
+            data = response_data
+            console.log(data)
+        }
+        )
+
+        let accordians = []
+        
+        var items = data['suggestions'][i].map((ele)=>{
+                return (`<tr>
+                    <td>${ele}</td>
+                </tr>`)
+            }).join('')
+
+            accordians.push(`<div class="accordion-item">
+                <h2 class="accordion-header" id="heading${idx}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${idx}" aria-expanded="true" aria-controls="collapse${idx}">
+                    <div class="horizontal"><div>${i}</div> </div>
+                </button>
+                </h2>
+                <div id="collapse${idx}" class="accordion-collapse collapse ${idx==0?'show':''}" aria-labelledby="heading${idx}" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <table class="table">
+                        <tbody>
+                            ${items}
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>`)
+        
+        
+        
+        
+        document.getElementById('accordionExample').innerHTML = accordians.join('');
+
+    }
+</script>
+
+<script src="https://kit.fontawesome.com/411329c929.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+</html>
